@@ -3,19 +3,15 @@
 /**
  * home class
  */
-class Home extends Controller
+class Home
 {
-    //use Controller;
+    use Controller;
 
     public function index()
     {
 
-        $this->view('home');
-    }
+        $data['username'] = empty($_SESSION['USER']) ? 'User' : $_SESSION['USER']->email;
 
-    public function edit()
-    {
-        echo "from edit function";
-        $this->view('home');
+        $this->view('home', $data);
     }
 }
